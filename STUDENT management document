@@ -1,0 +1,42 @@
+class student():
+    def details(self,name,roll,marks,branch):
+        self.name=name
+        self.roll=roll
+        self.marks=marks
+        self.branch=branch
+        return f'student:{name} ,roll:{roll} ,mark: {marks} ,branch:{branch}'
+sub=student()
+a=sub.details('priya','174','94','cse'),sub.details("jiya","173","32","mca"),sub.details("siya","177","72","m-tech"),sub.details("kiya","183","98","aiml"),sub.details("miya","173","32","cse"),sub.details("fiya","173","32","m-tech"),sub.details("giya","173","32","mca"),sub.details("hiya","173","32","aiml"),sub.details("ciya","173","32","cse"),sub.details("jiya","173","32","m-tech"),sub.details("kiya","173","32","aiml"),sub.details("liya","173","32","mca"),sub.details("miya","173","32","cse"),sub.details("niya","173","32","mca"),sub.details("oiya","173","32","m-tech"),sub.details("piya","173","32","mca"),sub.details("qiya","173","32","cse"),sub.details("riya","173","32","aiml"),sub.details("tiya","173","32","m-tech"),sub.details("siya","173","32","mca"),sub.details("uiya","173","32","cse"),sub.details("ivya","173","32","aiml"),sub.details("wiya","173","32","m-tech"),sub.details("xiya","173","32","mca"),sub.details("yiya","173","32","cse"),sub.details("yiya","173","32","cse")
+print(a)
+import csv
+data_list=a
+with open("student.csv",'w') as f:
+    write=csv.writer(f)
+    write.writerow("STUDENT MANAGEMENT FILE")
+    for data in data_list:
+        write.writerow(data)
+with open("student.csv",'r')as f:   
+    csv_reader=csv.reader(f,delimiter=':')
+    for row in csv_reader:
+        print(row)
+class add_students():
+    def new_details(self,name,roll,mark,branch):
+        self.name=name
+        self.roll=roll
+        self.mark=mark
+        self.branch=branch
+        return f"student:{name},roll:{roll},mark:{mark},branch:{branch}"
+new_data=add_students()
+z=new_data.new_details(name='miki',roll='185',mark='89',branch='datascience')
+print(z)
+with open("student.csv",'w')as f:
+        new_write=csv.writer(f)
+        m=new_write.writerow(z)
+with open("student.csv",'r')as f:        
+    reading=csv.reader(f,delimiter=':')
+    for row in reading:
+        print(row)
+import pandas as pd
+df=pd.read_csv("student.csv")
+unique=df.drop_duplicates()
+print(unique)
