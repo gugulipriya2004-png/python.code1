@@ -1,0 +1,48 @@
+import pandas as pd
+import numpy as np
+student_names = [
+    "Emily Johnson", "Liam Smith", "Olivia Davis", "Noah Wilson", "Ava Moore",
+    "Ethan Taylor", "Sophia Anderson", "Mason Thomas", "Isabella Jackson", "Jacob White",
+    "Mia Harris", "William Martin", "Charlotte Thompson", "James Garcia", "Amelia Rodriguez",
+    "Benjamin Lee", "Harper Perez", "Lucas Hall", "Evelyn Green", "Alexander Adams",
+    "Abigail Baker", "Michael Carter", "Elizabeth Clark", "Daniel Lewis", "Ella Scott",
+    "Henry King", "Scarlett Wright", "Samuel Martinez", "Grace Walker", "Sebastian Lopez"]
+marks = np.random.randint(50, 101, size=30)
+df = pd.DataFrame({
+    'Name': student_names,
+    'Marks': marks
+})
+df.to_csv('student_marks.csv ', index=False)
+print("File 'student_marks.csv' has been created successfully using pandas.")
+b=pd.read_csv('student_marks.csv')
+print(pd.DataFrame(b))
+file=open('student_marks.csv','w')
+a=df['Marks']
+print("averange of the total mark list is:",sum(a)/29)
+def grade():
+    grade=[]
+    for i in a:
+        if (i>40 and i<50):
+            grade.append("D-Grade")
+        elif (i>50 and i<70):
+            grade.append("C-Grade")
+        elif (i>70 and i<80):
+            grade.append("B-Grade")
+        elif(i>80 and i<100):
+            grade.append("A-Grade")
+        else:
+            grade.append("fail")
+    return grade
+x=grade()
+print(x)
+f=x.count("fail")
+print("fail rate:",f)
+D=x.count("D-Grade")
+print("D-Grade rate:",D)
+C=x.count("C-Grade")
+print("C-Grade rate:",C)
+B=x.count("B-Grade")
+print("B-Grade rate:",B)
+A=x.count("A-Grade")
+print("A-Grade rate:",A)
+pd.DataFrame(df['Name']+x)
